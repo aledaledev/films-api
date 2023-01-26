@@ -1,11 +1,10 @@
 const {Router} = require('express')
 const router = Router()
 
-const apiFilmsRouter = require('./api/films')
+const apiFilmsRouter = require('./api/films.routes')
 router.use('/films', apiFilmsRouter)
 
-router.get('/', (req,res) => {
-    res.send('using /api')
-})
+const apiUsersRouter = require('./api/users.routes')
+router.use('/users', apiUsersRouter)
 
 module.exports = router

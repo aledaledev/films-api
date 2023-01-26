@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
-
 const filmModel = require('./models/films')
+const userModel = require('./models/users')
 
 //                      'database','user','password',{host, dialect:'db'}
 const sequelize = new Sequelize('sql10593350','sql10593350','XrfqtsFAA7',{
@@ -8,13 +8,16 @@ const sequelize = new Sequelize('sql10593350','sql10593350','XrfqtsFAA7',{
     dialect:'mysql'
 })
 
+//sincronizar db
 const Film = filmModel(sequelize, Sequelize)
+const User = userModel(sequelize, Sequelize)
 
 sequelize.sync({force: false})
 .then(() => {
-    console.log('Table Sync!');
+    console.log('Tables Sync!');
 })
 
 module.exports = {
-    Film
+    Film,
+    User 
 }
