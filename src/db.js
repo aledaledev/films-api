@@ -1,11 +1,12 @@
 const Sequelize = require('sequelize')
 const filmModel = require('./models/films')
 const userModel = require('./models/users')
+const {config} = require('./config')
 
 //                      'database','user','password',{host, dialect:'db'}
-const sequelize = new Sequelize('sql10593350','sql10593350','XrfqtsFAA7',{
-    host:'sql10.freemysqlhosting.net',
-    dialect:'mysql'
+const sequelize = new Sequelize(config.database,config.user,config.password,{
+    host:config.host,
+    dialect:config.dialect
 })
 
 //sincronizar db
